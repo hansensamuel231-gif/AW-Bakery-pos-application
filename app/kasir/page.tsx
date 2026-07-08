@@ -106,7 +106,7 @@ export default function KasirPage() {
           <div className="border-t-2 border-border pt-4 pb-4 print:pt-2 print:pb-2">
             <div className="flex justify-between font-bold text-lg print:text-base">
               <span>Total:</span>
-              <span>Rp {cartTotal.toLocaleString('id-ID')}</span>
+              <span>Rp {lastTransaction.total.toLocaleString('id-ID')}</span>
             </div>
             <div className="flex justify-between text-sm mt-2 print:mt-1 text-muted-foreground">
               <span>Metode Pembayaran:</span>
@@ -224,9 +224,10 @@ export default function KasirPage() {
                 <Button
                   onClick={() => handleAddToCart(product)}
                   disabled={product.stock === 0}
-                  className="w-full h-12 bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-base px-4 py-3 flex items-center justify-center rounded"
+                  className="w-full h-12 bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-base px-4 py-3 flex items-center justify-center rounded gap-2"
                 >
-                  Tambah ke Keranjang
+                  <Plus className="w-5 h-5" />
+                  Keranjang
                 </Button>
               </Card>
             ))}
