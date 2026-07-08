@@ -6,13 +6,7 @@ import { Product } from '@/lib/types';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
+import { SelectSimple } from '@/components/ui/select-simple';
 import {
   Dialog,
   DialogContent,
@@ -269,23 +263,17 @@ export default function ManageProductsPage() {
               <label className="block text-sm font-medium text-foreground mb-2">
                 Kategori *
               </label>
-              <Select
+              <SelectSimple
                 value={formData.category}
-                onValueChange={(value) =>
-                  setFormData({ ...formData, category: value })
+                onChange={(e) =>
+                  setFormData({ ...formData, category: e.target.value })
                 }
-              >
-                <SelectTrigger className="cursor-pointer hover:border-primary hover:shadow-md transition-all duration-200 h-10">
-                  <SelectValue placeholder="Pilih kategori" />
-                </SelectTrigger>
-                <SelectContent className="smooth-transition">
-                  {CATEGORIES.map((cat) => (
-                    <SelectItem key={cat} value={cat} className="cursor-pointer">
-                      {cat}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+                options={CATEGORIES.map((cat) => ({
+                  value: cat,
+                  label: cat,
+                }))}
+                placeholder="Pilih kategori"
+              />
             </div>
 
             <div>

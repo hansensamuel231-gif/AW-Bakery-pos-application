@@ -5,13 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useAuth } from '@/lib/auth-context';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
+import { SelectSimple } from '@/components/ui/select-simple';
 import Link from 'next/link';
 import { UserRole } from '@/lib/types';
 
@@ -105,15 +99,15 @@ export default function SignupPage() {
               <label className="block text-sm font-medium text-foreground mb-2">
                 Peran (Role)
               </label>
-              <Select value={role} onValueChange={(value) => setRole(value as UserRole)}>
-                <SelectTrigger className="cursor-pointer hover:border-primary hover:shadow-md transition-all duration-200 h-10">
-                  <SelectValue placeholder="Pilih peran" />
-                </SelectTrigger>
-                <SelectContent className="smooth-transition">
-                  <SelectItem value="kasir" className="cursor-pointer">Kasir (Penjualan)</SelectItem>
-                  <SelectItem value="pemilik" className="cursor-pointer">Pemilik (Manajemen)</SelectItem>
-                </SelectContent>
-              </Select>
+              <SelectSimple
+                value={role}
+                onChange={(e) => setRole(e.target.value as UserRole)}
+                options={[
+                  { value: 'kasir', label: 'Kasir (Penjualan)' },
+                  { value: 'pemilik', label: 'Pemilik (Manajemen)' },
+                ]}
+                placeholder="Pilih peran"
+              />
             </div>
 
             <Button
