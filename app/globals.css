@@ -47,39 +47,39 @@
 
 :root {
   color-scheme: light;
-  /* Bakery Color Scheme */
+  /* Bakery Color Scheme - Updated for Better Contrast */
   --background: #FFF8F0; /* Cream */
-  --foreground: #2C2C2C; /* Dark Brown */
-  --card: #FFFBF7; /* Light Cream */
-  --card-foreground: #2C2C2C;
-  --popover: #FFFBF7;
-  --popover-foreground: #2C2C2C;
-  --primary: #8B6F47; /* Warm Brown */
-  --primary-foreground: #FFFBF7;
-  --secondary: #D4A574; /* Light Brown/Tan */
-  --secondary-foreground: #2C2C2C;
-  --muted: #E8D5C4;
-  --muted-foreground: #6B5D4F;
-  --accent: #E8B44F; /* Warm Orange */
-  --accent-foreground: #2C2C2C;
+  --foreground: #333333; /* Dark Gray - Better contrast */
+  --card: #FFF8F0; /* Light Cream */
+  --card-foreground: #333333; /* Dark text on cards */
+  --popover: #FFF8F0;
+  --popover-foreground: #333333;
+  --primary: #FF8C42; /* Vibrant Orange - Primary buttons */
+  --primary-foreground: #FFFFFF; /* White text on orange */
+  --secondary: #8B4513; /* Brown - Secondary buttons */
+  --secondary-foreground: #FFFFFF; /* White text on brown */
+  --muted: #F0E8DC; /* Light background */
+  --muted-foreground: #666666; /* Medium gray */
+  --accent: #FF8C42; /* Orange for accents */
+  --accent-foreground: #FFFFFF; /* White text */
   --destructive: #D9534F;
   --border: #E8D5C4;
-  --input: #FFFBF7;
-  --ring: #8B6F47;
+  --input: #FFFFFF; /* White input backgrounds */
+  --ring: #FF8C42; /* Orange focus ring */
   --chart-1: #8B6F47;
   --chart-2: #D4A574;
-  --chart-3: #E8B44F;
-  --chart-4: #E8A855;
+  --chart-3: #FF8C42;
+  --chart-4: #FF8C42;
   --chart-5: #C9915E;
   --radius: 0.625rem;
   --sidebar: #8B6F47;
-  --sidebar-foreground: #FFFBF7;
+  --sidebar-foreground: #FFFFFF;
   --sidebar-primary: #6B5D4F;
-  --sidebar-primary-foreground: #FFFBF7;
-  --sidebar-accent: #E8B44F;
-  --sidebar-accent-foreground: #2C2C2C;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #FF8C42;
+  --sidebar-accent-foreground: #FFFFFF;
   --sidebar-border: #D4A574;
-  --sidebar-ring: #E8B44F;
+  --sidebar-ring: #FF8C42;
 }
 
 .dark {

@@ -91,8 +91,7 @@ export default function LoginPage() {
             </p>
             <Link href="/auth/signup">
               <Button
-                variant="outline"
-                className="w-full border-secondary text-secondary hover:bg-secondary/10"
+                className="w-full bg-secondary hover:bg-secondary/90 text-secondary-foreground font-semibold"
               >
                 Daftar di sini
               </Button>

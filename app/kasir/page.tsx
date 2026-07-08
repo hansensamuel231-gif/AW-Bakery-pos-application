@@ -157,33 +157,33 @@ export default function KasirPage() {
         </div>
 
         <div className="flex-1 overflow-auto p-6">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredProducts.map((product) => (
               <Card
                 key={product.id}
-                className="p-4 hover:shadow-lg transition-shadow bg-card border-border"
+                className="p-5 hover:shadow-xl transition-shadow bg-card border-border flex flex-col"
               >
-                <div className="relative bg-muted rounded-lg h-32 mb-3 flex items-center justify-center overflow-hidden">
+                <div className="relative bg-muted rounded-lg h-56 mb-4 flex items-center justify-center overflow-hidden">
                   <Image
                     src={product.imageUrl}
                     alt={product.name}
                     fill
                     className="object-cover"
-                    sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                 </div>
-                <h3 className="font-semibold text-sm text-foreground mb-1">
+                <h3 className="font-bold text-lg text-foreground mb-2">
                   {product.name}
                 </h3>
-                <p className="text-sm text-muted-foreground mb-2">
+                <p className="text-lg font-semibold text-primary mb-2">
                   Rp {product.price.toLocaleString('id-ID')}
                 </p>
-                <p className={`text-xs mb-3 ${
-                  product.stock > 0 ? 'text-green-600' : 'text-destructive'
+                <p className={`text-sm mb-4 font-medium ${
+                  product.stock > 0 ? 'text-green-700' : 'text-destructive'
                 }`}>
                   Stok: {product.stock}
                 </p>
-                <div className="flex items-center gap-2 mb-2">
+                <div className="flex items-center gap-2 mb-3 mt-auto">
                   <Button
                     size="sm"
                     variant="outline"
@@ -194,7 +194,7 @@ export default function KasirPage() {
                       }))
                     }
                   >
-                    <Minus className="w-3 h-3" />
+                    <Minus className="w-4 h-4" />
                   </Button>
                   <Input
                     type="number"
@@ -205,7 +205,7 @@ export default function KasirPage() {
                         [product.id]: Math.max(1, parseInt(e.target.value) || 1),
                       }))
                     }
-                    className="w-12 h-8 text-center text-sm"
+                    className="w-14 h-9 text-center text-base"
                     min="1"
                   />
                   <Button
@@ -218,14 +218,13 @@ export default function KasirPage() {
                       }))
                     }
                   >
-                    <Plus className="w-3 h-3" />
+                    <Plus className="w-4 h-4" />
                   </Button>
                 </div>
                 <Button
                   onClick={() => handleAddToCart(product)}
                   disabled={product.stock === 0}
-                  className="w-full bg-accent hover:bg-accent/90 text-accent-foreground"
-                  size="sm"
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-5 text-base"
                 >
                   Tambah ke Keranjang
                 </Button>
@@ -236,34 +235,34 @@ export default function KasirPage() {
       </div>
 
       {/* Cart Section */}
-      <div className="w-80 bg-card border-l border-border flex flex-col">
-        <div className="p-6 border-b border-border">
-          <h3 className="text-xl font-bold text-foreground">Keranjang Belanja</h3>
+      <div className="w-96 bg-card border-l border-border flex flex-col">
+        <div className="p-6 border-b border-border bg-primary">
+          <h3 className="text-2xl font-bold text-primary-foreground">Keranjang Belanja</h3>
         </div>
 
-        <div className="flex-1 overflow-auto p-4">
+        <div className="flex-1 overflow-auto p-5">
           {cart.length === 0 ? (
-            <p className="text-muted-foreground text-center py-8">
+            <p className="text-muted-foreground text-center py-8 text-base">
               Keranjang kosong
             </p>
           ) : (
-            <div className="space-y-3">
+            <div className="space-y-4">
               {cart.map((item) => (
-                <Card key={item.product.id} className="p-3 bg-background border-border">
-                  <div className="flex justify-between items-start mb-2">
-                    <h4 className="font-semibold text-sm text-foreground">
+                <Card key={item.product.id} className="p-4 bg-muted border-border">
+                  <div className="flex justify-between items-start mb-3">
+                    <h4 className="font-bold text-base text-foreground flex-1">
                       {item.product.name}
                     </h4>
                     <Button
                       size="sm"
                       variant="ghost"
                       onClick={() => removeFromCart(item.product.id)}
-                      className="text-destructive hover:text-destructive/90 h-6 w-6 p-0"
+                      className="text-destructive hover:text-destructive/90 h-7 w-7 p-0"
                     >
                       <Trash2 className="w-4 h-4" />
                     </Button>
                   </div>
-                  <div className="flex items-center gap-2 mb-2">
+                  <div className="flex items-center gap-2 mb-3">
                     <Button
                       size="sm"
                       variant="outline"
@@ -273,11 +272,11 @@ export default function KasirPage() {
                           Math.max(1, item.quantity - 1)
                         )
                       }
-                      className="h-6 w-6 p-0"
+                      className="h-8 w-8 p-0"
                     >
-                      <Minus className="w-3 h-3" />
+                      <Minus className="w-4 h-4" />
                     </Button>
-                    <span className="text-sm font-semibold w-8 text-center">
+                    <span className="text-base font-bold w-10 text-center text-foreground">
                       {item.quantity}
                     </span>
                     <Button
@@ -286,12 +285,12 @@ export default function KasirPage() {
                       onClick={() =>
                         updateCartQuantity(item.product.id, item.quantity + 1)
                       }
-                      className="h-6 w-6 p-0"
+                      className="h-8 w-8 p-0"
                     >
-                      <Plus className="w-3 h-3" />
+                      <Plus className="w-4 h-4" />
                     </Button>
                   </div>
-                  <div className="text-sm text-muted-foreground">
+                  <div className="text-base font-semibold text-foreground">
                     Rp{' '}
                     {(
                       item.product.price * item.quantity
@@ -303,24 +302,24 @@ export default function KasirPage() {
           )}
         </div>
 
-        <div className="border-t border-border p-4 space-y-4">
-          <div className="bg-background rounded-lg p-3">
-            <div className="flex justify-between mb-2">
-              <span className="text-sm text-muted-foreground">Subtotal:</span>
-              <span className="font-semibold">
+        <div className="border-t border-border p-5 space-y-4">
+          <div className="bg-muted rounded-lg p-4">
+            <div className="flex justify-between mb-3">
+              <span className="text-base text-muted-foreground">Subtotal:</span>
+              <span className="font-bold text-foreground text-base">
                 Rp {cartTotal.toLocaleString('id-ID')}
               </span>
             </div>
-            <div className="border-t border-border pt-2 mt-2 flex justify-between">
-              <span className="font-bold">Total:</span>
-              <span className="font-bold text-lg text-accent">
+            <div className="border-t border-border pt-3 mt-3 flex justify-between">
+              <span className="font-bold text-foreground text-lg">Total:</span>
+              <span className="font-bold text-2xl text-primary">
                 Rp {cartTotal.toLocaleString('id-ID')}
               </span>
             </div>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-foreground mb-2">
+            <label className="block text-base font-semibold text-foreground mb-2">
               Metode Pembayaran
             </label>
             <Select
@@ -329,7 +328,7 @@ export default function KasirPage() {
                 setPaymentMethod(value as 'tunai' | 'debit' | 'qris')
               }
             >
-              <SelectTrigger>
+              <SelectTrigger className="h-10">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -343,7 +342,7 @@ export default function KasirPage() {
           <Button
             onClick={handleCompleteTransaction}
             disabled={cart.length === 0}
-            className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
+            className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-6 text-lg"
           >
             Selesaikan Transaksi
           </Button>
