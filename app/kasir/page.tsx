@@ -224,7 +224,7 @@ export default function KasirPage() {
                 <Button
                   onClick={() => handleAddToCart(product)}
                   disabled={product.stock === 0}
-                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-5 text-base"
+                  className="w-full h-12 bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-base px-4 py-3 flex items-center justify-center rounded"
                 >
                   Tambah ke Keranjang
                 </Button>
