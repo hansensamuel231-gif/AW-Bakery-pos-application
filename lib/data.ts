@@ -99,7 +99,7 @@ export const MOCK_PRODUCTS: Product[] = [
   },
 ];
 
-export const CATEGORIES = ['Roti', 'Pastry', 'Donat', 'Kue'];
+export const CATEGORIES = ['Roti', 'Kue', 'Pastry', 'Minuman', 'Lainnya'];
 
 export const MOCK_TRANSACTIONS: Transaction[] = [
   {

@@ -105,13 +105,13 @@ export default function SignupPage() {
               <label className="block text-sm font-medium text-foreground mb-2">
                 Peran (Role)
               </label>
-              <Select value={role} onValueChange={(value) => setRole(value as UserRole)} disabled={isLoading}>
-                <SelectTrigger>
+              <Select value={role} onValueChange={(value) => setRole(value as UserRole)}>
+                <SelectTrigger className="cursor-pointer hover:border-primary hover:shadow-md transition-all duration-200 h-10">
                   <SelectValue placeholder="Pilih peran" />
                 </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="kasir">Kasir (Penjualan)</SelectItem>
-                  <SelectItem value="pemilik">Pemilik (Manajemen)</SelectItem>
+                <SelectContent className="smooth-transition">
+                  <SelectItem value="kasir" className="cursor-pointer">Kasir (Penjualan)</SelectItem>
+                  <SelectItem value="pemilik" className="cursor-pointer">Pemilik (Manajemen)</SelectItem>
                 </SelectContent>
               </Select>
             </div>
