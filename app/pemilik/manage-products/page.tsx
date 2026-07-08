@@ -114,7 +114,7 @@ export default function ManageProductsPage() {
         <h1 className="text-3xl font-bold text-foreground">Kelola Produk</h1>
         <Button
           onClick={() => handleOpenDialog()}
-          className="bg-primary hover:bg-primary/90 text-primary-foreground"
+          className="bg-primary hover:bg-primary/90 text-primary-foreground interactive-button"
         >
           <Plus className="w-4 h-4 mr-2" />
           Tambah Produk Baru
@@ -158,7 +158,7 @@ export default function ManageProductsPage() {
             {filteredProducts.map((product) => (
               <tr
                 key={product.id}
-                className="border-b border-border hover:bg-background bg-card"
+                className="border-b border-border hover:bg-background bg-card transition-colors duration-200 cursor-pointer"
               >
                 <td className="py-4 px-4 text-sm">{product.id}</td>
                 <td className="py-4 px-4 font-semibold text-foreground">
@@ -275,12 +275,12 @@ export default function ManageProductsPage() {
                   setFormData({ ...formData, category: value })
                 }
               >
-                <SelectTrigger>
+                <SelectTrigger className="cursor-pointer hover:border-primary hover:shadow-md transition-all duration-200 h-10">
                   <SelectValue placeholder="Pilih kategori" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="smooth-transition">
                   {CATEGORIES.map((cat) => (
-                    <SelectItem key={cat} value={cat}>
+                    <SelectItem key={cat} value={cat} className="cursor-pointer">
                       {cat}
                     </SelectItem>
                   ))}
@@ -304,7 +304,7 @@ export default function ManageProductsPage() {
             <div className="flex gap-2 pt-4">
               <Button
                 type="submit"
-                className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground"
+                className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground interactive-button"
               >
                 {editingProduct ? 'Simpan Perubahan' : 'Tambah Produk'}
               </Button>
@@ -312,7 +312,7 @@ export default function ManageProductsPage() {
                 type="button"
                 variant="outline"
                 onClick={handleCloseDialog}
-                className="flex-1"
+                className="flex-1 interactive-button"
               >
                 Batal
               </Button>

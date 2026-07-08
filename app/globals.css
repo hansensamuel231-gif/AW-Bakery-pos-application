@@ -162,3 +162,26 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Interactive Effects */
+@layer components {
+  .interactive-card {
+    @apply transition-all duration-300 cursor-pointer hover:shadow-lg hover:-translate-y-1;
+  }
+
+  .interactive-button {
+    @apply transition-all duration-200 cursor-pointer hover:scale-105 hover:shadow-lg active:scale-95;
+  }
+
+  .smooth-transition {
+    @apply transition-all duration-300;
+  }
+
+  .fade-in {
+    @apply animate-in fade-in duration-300;
+  }
+
+  .fade-out {
+    @apply animate-out fade-out duration-300;
+  }
+}

@@ -124,7 +124,7 @@ export default function KasirPage() {
           <div className="flex gap-2 mt-6 print:hidden">
             <Button
               onClick={handlePrintReceipt}
-              className="flex-1 bg-primary hover:bg-primary/90"
+              className="flex-1 bg-primary hover:bg-primary/90 interactive-button"
             >
               <Printer className="w-4 h-4 mr-2" />
               Cetak
@@ -132,7 +132,7 @@ export default function KasirPage() {
             <Button
               onClick={handleNewTransaction}
               variant="outline"
-              className="flex-1"
+              className="flex-1 interactive-button"
             >
               Transaksi Baru
             </Button>
@@ -161,7 +161,7 @@ export default function KasirPage() {
             {filteredProducts.map((product) => (
               <Card
                 key={product.id}
-                className="p-5 hover:shadow-xl transition-shadow bg-card border-border flex flex-col"
+                className="p-5 bg-card border-border flex flex-col interactive-card"
               >
                 <div className="relative bg-muted rounded-lg h-56 mb-4 flex items-center justify-center overflow-hidden">
                   <Image
@@ -193,6 +193,7 @@ export default function KasirPage() {
                         [product.id]: Math.max(1, (prev[product.id] || 1) - 1),
                       }))
                     }
+                    className="interactive-button"
                   >
                     <Minus className="w-4 h-4" />
                   </Button>
@@ -217,6 +218,7 @@ export default function KasirPage() {
                         [product.id]: (prev[product.id] || 1) + 1,
                       }))
                     }
+                    className="interactive-button"
                   >
                     <Plus className="w-4 h-4" />
                   </Button>
@@ -224,7 +226,7 @@ export default function KasirPage() {
                 <Button
                   onClick={() => handleAddToCart(product)}
                   disabled={product.stock === 0}
-                  className="w-full h-12 bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-base px-4 py-3 flex items-center justify-center rounded gap-2"
+                  className="w-full h-12 bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-base px-4 py-3 flex items-center justify-center rounded gap-2 interactive-button"
                 >
                   <Plus className="w-5 h-5" />
                   Keranjang
@@ -258,7 +260,7 @@ export default function KasirPage() {
                       size="sm"
                       variant="ghost"
                       onClick={() => removeFromCart(item.product.id)}
-                      className="text-destructive hover:text-destructive/90 h-7 w-7 p-0"
+                      className="text-destructive hover:text-destructive/90 h-7 w-7 p-0 interactive-button"
                     >
                       <Trash2 className="w-4 h-4" />
                     </Button>
@@ -273,7 +275,7 @@ export default function KasirPage() {
                           Math.max(1, item.quantity - 1)
                         )
                       }
-                      className="h-8 w-8 p-0"
+                      className="h-8 w-8 p-0 interactive-button"
                     >
                       <Minus className="w-4 h-4" />
                     </Button>
@@ -286,7 +288,7 @@ export default function KasirPage() {
                       onClick={() =>
                         updateCartQuantity(item.product.id, item.quantity + 1)
                       }
-                      className="h-8 w-8 p-0"
+                      className="h-8 w-8 p-0 interactive-button"
                     >
                       <Plus className="w-4 h-4" />
                     </Button>
@@ -343,7 +345,7 @@ export default function KasirPage() {
           <Button
             onClick={handleCompleteTransaction}
             disabled={cart.length === 0}
-            className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-6 text-lg"
+            className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-6 text-lg interactive-button"
           >
             Selesaikan Transaksi
           </Button>
@@ -352,7 +354,7 @@ export default function KasirPage() {
             <Button
               onClick={() => clearCart()}
               variant="outline"
-              className="w-full"
+              className="w-full interactive-button"
             >
               Bersihkan Keranjang
             </Button>
