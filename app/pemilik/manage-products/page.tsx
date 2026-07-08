@@ -265,14 +265,16 @@ export default function ManageProductsPage() {
               </label>
               <SelectSimple
                 value={formData.category}
-                onChange={(e) =>
+                onChange={(e) => {
                   setFormData({ ...formData, category: e.target.value })
-                }
+                }}
                 options={CATEGORIES.map((cat) => ({
                   value: cat,
                   label: cat,
                 }))}
                 placeholder="Pilih kategori"
+                required
+                className="bg-white border-2 border-input hover:border-primary"
               />
             </div>
 
