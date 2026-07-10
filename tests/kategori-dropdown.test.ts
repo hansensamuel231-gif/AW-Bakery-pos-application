@@ -4,7 +4,7 @@
  */
 
 // Kategori yang seharusnya tersedia:
-const EXPECTED_CATEGORIES = ['Roti', 'Kue', 'Pastry', 'Minuman', 'Lainnya'];
+const EXPECTED_CATEGORIES = ['Roti Bantal', 'Roti Kecil'];
 
 /**
  * Test Checklist:
@@ -14,11 +14,8 @@ const EXPECTED_CATEGORIES = ['Roti', 'Kue', 'Pastry', 'Minuman', 'Lainnya'];
  *    - [ ] Input field dengan placeholder "Pilih kategori" muncul
  * 
  * 2. Semua Kategori Tersedia:
- *    - [ ] Roti
- *    - [ ] Kue
- *    - [ ] Pastry
- *    - [ ] Minuman
- *    - [ ] Lainnya
+ *    - [ ] Roti Bantal
+ *    - [ ] Roti Kecil
  * 
  * 3. Interaksi Dropdown:
  *    - [ ] Dapat diklik untuk membuka daftar pilihan
@@ -40,14 +37,14 @@ const EXPECTED_CATEGORIES = ['Roti', 'Kue', 'Pastry', 'Minuman', 'Lainnya'];
  * 2. Buka halaman Kelola Produk
  * 3. Klik "Tambah Produk Baru"
  * 4. Klik pada field kategori
- * 5. Verifikasi semua 5 kategori muncul
+ * 5. Verifikasi semua 2 kategori muncul
  * 6. Pilih salah satu kategori
  * 7. Verifikasi kategori terpilih tampil di field
  */
 
 export const kategoriTests = {
   expectedCategories: EXPECTED_CATEGORIES,
-  totalCategories: 5,
+  totalCategories: 2,
   formFields: {
     kategori: 'Kategori *',
     placeholder: 'Pilih kategori',

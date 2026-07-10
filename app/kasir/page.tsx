@@ -16,6 +16,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Plus, Minus, Trash2, Printer } from 'lucide-react';
+import { CATEGORIES } from '@/lib/data';
 
 export default function KasirPage() {
   const { products, cart, addToCart, updateCartQuantity, removeFromCart, clearCart, addTransaction } = useApp();
@@ -23,12 +24,15 @@ export default function KasirPage() {
   const [quantities, setQuantities] = useState<{ [key: string]: number }>({});
   const [paymentMethod, setPaymentMethod] = useState<'tunai' | 'debit' | 'qris'>('tunai');
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState<string>('');
   const [showReceipt, setShowReceipt] = useState(false);
   const [lastTransaction, setLastTransaction] = useState<Transaction | null>(null);
 
-  const filteredProducts = products.filter((p) =>
-    p.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredProducts = products.filter((p) => {
+    const matchesSearch = p.name.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesCategory = !selectedCategory || p.category === selectedCategory;
+    return matchesSearch && matchesCategory;
+  });
 
   const cartTotal = cart.reduce(
     (sum, item) => sum + item.product.price * item.quantity,
@@ -148,12 +152,34 @@ export default function KasirPage() {
       <div className="flex-1 flex flex-col overflow-hidden">
         <div className="p-6 border-b border-border bg-card">
           <h2 className="text-2xl font-bold text-foreground mb-4">Sistem Penjualan (POS)</h2>
-          <Input
-            placeholder="Cari produk..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="max-w-md"
-          />
+          <div className="flex flex-col md:flex-row gap-4 md:items-center justify-between">
+            <Input
+              placeholder="Cari produk..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="max-w-md"
+            />
+            <div className="flex gap-2 items-center flex-wrap">
+              <span className="text-sm font-semibold text-muted-foreground mr-1">Kategori:</span>
+              <Button
+                variant={selectedCategory === '' ? 'default' : 'outline'}
+                onClick={() => setSelectedCategory('')}
+                className="interactive-button text-sm h-9 px-4"
+              >
+                Semua
+              </Button>
+              {CATEGORIES.map((cat) => (
+                <Button
+                  key={cat}
+                  variant={selectedCategory === cat ? 'default' : 'outline'}
+                  onClick={() => setSelectedCategory(cat)}
+                  className="interactive-button text-sm h-9 px-4"
+                >
+                  {cat}
+                </Button>
+              ))}
+            </div>
+          </div>
         </div>
 
         <div className="flex-1 overflow-auto p-6">
